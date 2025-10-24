@@ -15,6 +15,37 @@ CleanLauncher ist ein legaler Minecraft-Launcher für Windows, macOS und Linux. 
 
 ## Voraussetzungen
 
+- Node.js 18+ (siehe auch `engines`-Feld in `package.json`)
+- pnpm 8 (wird über `packageManager` deklariert)
+- macOS, Windows oder Linux
+
+Das Projekt steht unter der [MIT-Lizenz](LICENSE) und kann als Ausgangspunkt für eigene, legale Launcher-Projekte genutzt werden.
+
+## Schnellstart – „Wie benutze ich das?“
+
+1. **Abhängigkeiten installieren**
+
+   ```bash
+   pnpm install
+   ```
+
+2. **Launcher im Entwicklungsmodus starten**
+
+   ```bash
+   pnpm dev
+   ```
+
+   Dadurch öffnen sich automatisch Electron und die Vite-Entwicklungsumgebung.
+
+3. **Mit Microsoft-Konto anmelden** – Klicke im Account-Panel auf „Mit Microsoft anmelden“ und folge dem Device-Code-Flow (siehe Abschnitt „Microsoft-Anmeldung“).
+
+4. **Instanz konfigurieren** – Wähle Java-Pfad, Speicherort und Version im „Instanz“-Panel.
+
+5. **Spiel starten** – Sobald Konto und Instanz vollständig konfiguriert sind, aktiviere bei Bedarf Vollbild/RAM-Einstellungen und drücke „Launch“.
+
+## Entwicklung
+
+Die gleichen Befehle eignen sich auch für die lokale Entwicklung; beim Ändern von React-Komponenten erfolgt Hot Reload automatisch.
 
 ## Entwicklung
 
@@ -43,6 +74,31 @@ pnpm test
 pnpm build
 ```
 
+Der Befehl erstellt die optimierten Produktions-Bundles für Main-, Preload- und Renderer-Prozess.
+
+### Windows-Installer (.exe)
+
+```bash
+pnpm package:win
+```
+
+Damit wird mit `electron-builder` ein signaturfreier NSIS-Installer erzeugt. Die resultierende Datei (`CleanLauncher-Setup-<version>.exe`)
+liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm package` verwendet werden.
+
+#### Automatischer GitHub-Download
+
+- Das Repository enthält einen GitHub-Actions-Workflow (`.github/workflows/release.yml`), der auf `workflow_dispatch` sowie auf veröffentlichte Releases reagiert.
+- Der Workflow baut auf `windows-latest`, führt `pnpm build` und `pnpm package:win` aus und lädt die erzeugte `CleanLauncher-Setup-<version>.exe` sowohl als Build-Artefakt als auch – bei Releases – direkt in den Release-Anhang hoch.
+- Nach dem Ausführen des Workflows steht der Installer unter „Actions → Build Windows Installer“ als Artefakt sowie bei veröffentlichten Releases zum direkten Download bereit.
+
+## Ersteinrichtung direkt in der EXE
+
+Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schritt für Schritt durch die wichtigsten Einstellungen führt:
+
+1. Vergib einen Instanz-Namen und wähle die gewünschte Minecraft-Version aus der Manifest-Liste.
+2. Lasse den Java-Pfad automatisch erkennen oder trage den Pfad zur `java`-Binary manuell ein.
+3. Lege RAM-Grenzen, Auflösung, Vollbild sowie Spiel- und Mods-Verzeichnisse fest – alles innerhalb des Wizards.
+4. Speichere die Einstellungen; der Launcher merkt sich die Auswahl und überspringt den Wizard künftig automatisch.
 
 
 ## Microsoft-Anmeldung
@@ -54,6 +110,7 @@ pnpm build
 
 ## Erste Instanz
 
+1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an oder nutze die Angaben aus dem Setup-Wizard als Grundlage.
 1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an.
 2. Wähle im Version-Picker die gewünschte Release- oder Snapshot-Version.
 3. Drücke „Launch“, sobald ein gültiges Konto verknüpft ist.

@@ -7,6 +7,7 @@ import { LogsPanel } from './components/LogsPanel';
 import { StatusBar } from './components/StatusBar';
 import { useAppStore } from './store/useAppStore';
 import { ThemeToggle } from './components/ThemeToggle';
+import { SetupWizard } from './components/SetupWizard';
 
 function useInitialData() {
   const setAccount = useAppStore((state) => state.setAccount);
@@ -18,6 +19,8 @@ function useInitialData() {
   const setLaunching = useAppStore((state) => state.setLaunching);
   const appendLog = useAppStore((state) => state.appendLog);
   const setTheme = useAppStore((state) => state.setTheme);
+  const setOnboardingComplete = useAppStore((state) => state.setOnboardingComplete);
+  const setShowSetupWizard = useAppStore((state) => state.setShowSetupWizard);
 
   useEffect(() => {
     const load = async () => {
@@ -28,6 +31,13 @@ function useInitialData() {
         window.cleanApi.settings.get()
       ]);
       if (account) setAccount(account);
+      if (settings) {
+        setTheme(settings.theme);
+        setOnboardingComplete(settings.onboardingComplete ?? false);
+        setShowSetupWizard(!settings.onboardingComplete);
+      } else {
+        setShowSetupWizard(true);
+      }
       if (settings) setTheme(settings.theme);
 
       const versionSummaries = manifest.versions.map((version: any) => ({
@@ -83,12 +93,26 @@ function useInitialData() {
       appendLog(`Prozess beendet (Code ${payload.code ?? 'unbekannt'})`);
       setProgress(null);
     });
+  }, [
+    appendLog,
+    setAccount,
+    setCurrentInstanceId,
+    setInstances,
+    setLaunching,
+    setOnboardingComplete,
+    setProgress,
+    setSelectedVersionId,
+    setShowSetupWizard,
+    setTheme,
+    setVersions
+  ]);
   }, [appendLog, setAccount, setCurrentInstanceId, setInstances, setLaunching, setProgress, setSelectedVersionId, setTheme, setVersions]);
 }
 
 export function App() {
   useInitialData();
   const theme = useAppStore((state) => state.theme);
+  const showSetupWizard = useAppStore((state) => state.showSetupWizard);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -96,6 +120,7 @@ export function App() {
 
   return (
     <div className={`flex min-h-screen flex-col ${theme === 'dark' ? 'bg-slate-900 text-slate-100' : 'bg-slate-100 text-slate-900'}`}>
+      {showSetupWizard ? <SetupWizard /> : null}
       <header className="border-b border-slate-800 bg-slate-900 px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
