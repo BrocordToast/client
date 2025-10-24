@@ -9,6 +9,7 @@ const settingsSchema = z.object({
   downloadThreads: z.number().int().min(1).max(16).default(4),
   proxy: z.string().url().optional(),
   onboardingComplete: z.boolean().default(false)
+  proxy: z.string().url().optional()
 });
 
 export type Settings = z.infer<typeof settingsSchema>;
