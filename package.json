@@ -1,21 +1,12 @@
 {
   "name": "clean-launcher",
   "version": "0.1.0",
-  "description": "Cross-platform Electron Minecraft launcher with Microsoft authentication",
-  "private": true,
-  "type": "module",
-  "license": "MIT",
-  "author": "CleanLauncher Contributors",
-  "packageManager": "pnpm@8.15.4",
-  "engines": {
-    "node": ">=18"
-  },
+
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
-    "package": "electron-builder -mwl",
-    "package:win": "electron-builder --win nsis",
+
     "preview": "electron-vite preview",
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
@@ -57,10 +48,7 @@
     "zustand": "4.4.4",
     "zod": "3.22.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://example.com/CleanLauncher.git"
-  },
+
   "build": {
     "appId": "com.cleanlauncher.app",
     "productName": "CleanLauncher",
@@ -76,8 +64,7 @@
       "category": "Game"
     },
     "win": {
-      "target": ["nsis"],
-      "artifactName": "${productName}-Setup-${version}.exe"
+
     }
   }
 }

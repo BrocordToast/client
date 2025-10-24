@@ -15,11 +15,6 @@ CleanLauncher ist ein legaler Minecraft-Launcher für Windows, macOS und Linux. 
 
 ## Voraussetzungen
 
-- Node.js 18+ (siehe auch `engines`-Feld in `package.json`)
-- pnpm 8 (wird über `packageManager` deklariert)
-- macOS, Windows oder Linux
-
-Das Projekt steht unter der [MIT-Lizenz](LICENSE) und kann als Ausgangspunkt für eigene, legale Launcher-Projekte genutzt werden.
 
 ## Entwicklung
 
@@ -48,16 +43,7 @@ pnpm test
 pnpm build
 ```
 
-Der Befehl erstellt die optimierten Produktions-Bundles für Main-, Preload- und Renderer-Prozess.
 
-### Windows-Installer (.exe)
-
-```bash
-pnpm package:win
-```
-
-Damit wird mit `electron-builder` ein signaturfreier NSIS-Installer erzeugt. Die resultierende Datei (`CleanLauncher-Setup-<version>.exe`)
-liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm package` verwendet werden.
 
 ## Microsoft-Anmeldung
 
