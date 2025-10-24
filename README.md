@@ -47,6 +47,15 @@ Das Projekt steht unter der [MIT-Lizenz](LICENSE) und kann als Ausgangspunkt fü
 
 Die gleichen Befehle eignen sich auch für die lokale Entwicklung; beim Ändern von React-Komponenten erfolgt Hot Reload automatisch.
 
+## Entwicklung
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Der Befehl startet Electron und die Vite-Entwicklungsumgebung.
+
 ### Tests & Qualitätssicherung
 
 ```bash
@@ -82,13 +91,6 @@ liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm pack
 - Der Workflow baut auf `windows-latest`, führt `pnpm build` und `pnpm package:win` aus und lädt die erzeugte `CleanLauncher-Setup-<version>.exe` sowohl als Build-Artefakt als auch – bei Releases – direkt in den Release-Anhang hoch.
 - Nach dem Ausführen des Workflows steht der Installer unter „Actions → Build Windows Installer“ als Artefakt sowie bei veröffentlichten Releases zum direkten Download bereit.
 
-#### Wo finde ich die `.exe`?
-
-1. Starte den Workflow **Actions → Build Windows Installer → Run workflow** oder veröffentliche ein GitHub-Release.
-2. Sobald der Lauf abgeschlossen ist, klicke im Workflow auf den Eintrag des Laufs und öffne den Abschnitt **Artifacts**. Dort findest du eine Datei namens `CleanLauncher-Setup-<version>.exe`, die direkt heruntergeladen werden kann.
-3. Alternativ erscheinen bei einem Release dieselben Artefakte als Release-Anhang unter **Releases → Assets**. Die Installationsdatei heißt identisch (`CleanLauncher-Setup-0.1.0.exe`) und lässt sich dort ebenfalls sofort herunterladen.
-4. Wenn du lokal baust (`pnpm package:win`), liegt die Installer-EXE im Projekt unter `dist/CleanLauncher Setup 0.1.0.exe` sowie ggf. `dist/CleanLauncher-Setup-0.1.0.exe` (je nach Windows-Dateinamensschema).
-
 ## Ersteinrichtung direkt in der EXE
 
 Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schritt für Schritt durch die wichtigsten Einstellungen führt:
@@ -97,6 +99,7 @@ Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schri
 2. Lasse den Java-Pfad automatisch erkennen oder trage den Pfad zur `java`-Binary manuell ein.
 3. Lege RAM-Grenzen, Auflösung, Vollbild sowie Spiel- und Mods-Verzeichnisse fest – alles innerhalb des Wizards.
 4. Speichere die Einstellungen; der Launcher merkt sich die Auswahl und überspringt den Wizard künftig automatisch.
+
 
 ## Microsoft-Anmeldung
 
@@ -108,6 +111,7 @@ Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schri
 ## Erste Instanz
 
 1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an oder nutze die Angaben aus dem Setup-Wizard als Grundlage.
+1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an.
 2. Wähle im Version-Picker die gewünschte Release- oder Snapshot-Version.
 3. Drücke „Launch“, sobald ein gültiges Konto verknüpft ist.
 
