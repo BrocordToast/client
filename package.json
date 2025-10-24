@@ -1,9 +1,15 @@
 {
   "name": "clean-launcher",
   "version": "0.1.0",
+  "description": "Cross-platform Electron Minecraft launcher with Microsoft authentication",
   "private": true,
   "type": "module",
+  "license": "MIT",
+  "author": "CleanLauncher Contributors",
   "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": ">=18"
+  },
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
@@ -50,6 +56,10 @@
     "react-router-dom": "6.18.0",
     "zustand": "4.4.4",
     "zod": "3.22.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://example.com/CleanLauncher.git"
   },
   "build": {
     "appId": "com.cleanlauncher.app",
