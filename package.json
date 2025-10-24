@@ -1,13 +1,12 @@
 {
   "name": "clean-launcher",
   "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "packageManager": "pnpm@8.15.4",
+
   "main": "dist/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
+
     "preview": "electron-vite preview",
     "lint": "eslint --ext .ts,.tsx src",
     "typecheck": "tsc --noEmit",
@@ -49,6 +48,7 @@
     "zustand": "4.4.4",
     "zod": "3.22.4"
   },
+
   "build": {
     "appId": "com.cleanlauncher.app",
     "productName": "CleanLauncher",
@@ -64,7 +64,7 @@
       "category": "Game"
     },
     "win": {
-      "target": ["nsis"]
+
     }
   }
 }
