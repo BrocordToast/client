@@ -76,6 +76,12 @@ pnpm package:win
 Damit wird mit `electron-builder` ein signaturfreier NSIS-Installer erzeugt. Die resultierende Datei (`CleanLauncher-Setup-<version>.exe`)
 liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm package` verwendet werden.
 
+#### Automatischer GitHub-Download
+
+- Das Repository enthält einen GitHub-Actions-Workflow (`.github/workflows/release.yml`), der auf `workflow_dispatch` sowie auf veröffentlichte Releases reagiert.
+- Der Workflow baut auf `windows-latest`, führt `pnpm build` und `pnpm package:win` aus und lädt die erzeugte `CleanLauncher-Setup-<version>.exe` sowohl als Build-Artefakt als auch – bei Releases – direkt in den Release-Anhang hoch.
+- Nach dem Ausführen des Workflows steht der Installer unter „Actions → Build Windows Installer“ als Artefakt sowie bei veröffentlichten Releases zum direkten Download bereit.
+
 ## Ersteinrichtung direkt in der EXE
 
 Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schritt für Schritt durch die wichtigsten Einstellungen führt:
