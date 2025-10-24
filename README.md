@@ -76,6 +76,15 @@ pnpm package:win
 Damit wird mit `electron-builder` ein signaturfreier NSIS-Installer erzeugt. Die resultierende Datei (`CleanLauncher-Setup-<version>.exe`)
 liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm package` verwendet werden.
 
+## Ersteinrichtung direkt in der EXE
+
+Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schritt für Schritt durch die wichtigsten Einstellungen führt:
+
+1. Vergib einen Instanz-Namen und wähle die gewünschte Minecraft-Version aus der Manifest-Liste.
+2. Lasse den Java-Pfad automatisch erkennen oder trage den Pfad zur `java`-Binary manuell ein.
+3. Lege RAM-Grenzen, Auflösung, Vollbild sowie Spiel- und Mods-Verzeichnisse fest – alles innerhalb des Wizards.
+4. Speichere die Einstellungen; der Launcher merkt sich die Auswahl und überspringt den Wizard künftig automatisch.
+
 ## Microsoft-Anmeldung
 
 1. Starte CleanLauncher.
@@ -85,7 +94,7 @@ liegt anschließend unter `dist/`. Für Builds aller Plattformen kann `pnpm pack
 
 ## Erste Instanz
 
-1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an.
+1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an oder nutze die Angaben aus dem Setup-Wizard als Grundlage.
 2. Wähle im Version-Picker die gewünschte Release- oder Snapshot-Version.
 3. Drücke „Launch“, sobald ein gültiges Konto verknüpft ist.
 

@@ -51,6 +51,8 @@ interface AppState {
   logs: string[];
   launching: boolean;
   theme: 'dark' | 'light';
+  onboardingComplete: boolean;
+  showSetupWizard: boolean;
   setAccount: (account: AccountSummary | null) => void;
   setVersions: (versions: VersionSummary[]) => void;
   setSelectedVersionId: (id: string) => void;
@@ -61,6 +63,8 @@ interface AppState {
   setLaunching: (launching: boolean) => void;
   setTheme: (theme: 'dark' | 'light') => void;
   resetLogs: () => void;
+  setOnboardingComplete: (value: boolean) => void;
+  setShowSetupWizard: (value: boolean) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -73,6 +77,8 @@ export const useAppStore = create<AppState>((set) => ({
   logs: [],
   launching: false,
   theme: 'dark',
+  onboardingComplete: false,
+  showSetupWizard: false,
   setAccount: (account) => set({ account }),
   setVersions: (versions) => set({ versions }),
   setSelectedVersionId: (id) => set({ selectedVersionId: id }),
@@ -82,5 +88,7 @@ export const useAppStore = create<AppState>((set) => ({
   setProgress: (progress) => set({ progress }),
   setLaunching: (launching) => set({ launching }),
   setTheme: (theme) => set({ theme }),
-  resetLogs: () => set({ logs: [] })
+  resetLogs: () => set({ logs: [] }),
+  setOnboardingComplete: (value) => set({ onboardingComplete: value }),
+  setShowSetupWizard: (value) => set({ showSetupWizard: value })
 }));

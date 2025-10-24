@@ -7,7 +7,8 @@ import { z } from 'zod';
 const settingsSchema = z.object({
   theme: z.enum(['light', 'dark']).default('dark'),
   downloadThreads: z.number().int().min(1).max(16).default(4),
-  proxy: z.string().url().optional()
+  proxy: z.string().url().optional(),
+  onboardingComplete: z.boolean().default(false)
 });
 
 export type Settings = z.infer<typeof settingsSchema>;
