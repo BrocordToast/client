@@ -47,6 +47,15 @@ Das Projekt steht unter der [MIT-Lizenz](LICENSE) und kann als Ausgangspunkt fü
 
 Die gleichen Befehle eignen sich auch für die lokale Entwicklung; beim Ändern von React-Komponenten erfolgt Hot Reload automatisch.
 
+## Entwicklung
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Der Befehl startet Electron und die Vite-Entwicklungsumgebung.
+
 ### Tests & Qualitätssicherung
 
 ```bash
@@ -98,6 +107,7 @@ Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schri
 3. Lege RAM-Grenzen, Auflösung, Vollbild sowie Spiel- und Mods-Verzeichnisse fest – alles innerhalb des Wizards.
 4. Speichere die Einstellungen; der Launcher merkt sich die Auswahl und überspringt den Wizard künftig automatisch.
 
+
 ## Microsoft-Anmeldung
 
 1. Starte CleanLauncher.
@@ -108,6 +118,7 @@ Beim allerersten Start öffnet sich automatisch ein Setup-Wizard, der dich Schri
 ## Erste Instanz
 
 1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an oder nutze die Angaben aus dem Setup-Wizard als Grundlage.
+1. Öffne den Abschnitt „Instanz“ und passe Java-Pfad, Spielordner und RAM an.
 2. Wähle im Version-Picker die gewünschte Release- oder Snapshot-Version.
 3. Drücke „Launch“, sobald ein gültiges Konto verknüpft ist.
 

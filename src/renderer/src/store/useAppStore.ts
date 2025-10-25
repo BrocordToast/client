@@ -91,4 +91,5 @@ export const useAppStore = create<AppState>((set) => ({
   resetLogs: () => set({ logs: [] }),
   setOnboardingComplete: (value) => set({ onboardingComplete: value }),
   setShowSetupWizard: (value) => set({ showSetupWizard: value })
+  resetLogs: () => set({ logs: [] })
 }));

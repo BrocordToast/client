@@ -38,6 +38,7 @@ function useInitialData() {
       } else {
         setShowSetupWizard(true);
       }
+      if (settings) setTheme(settings.theme);
 
       const versionSummaries = manifest.versions.map((version: any) => ({
         id: version.id,
@@ -105,6 +106,7 @@ function useInitialData() {
     setTheme,
     setVersions
   ]);
+  }, [appendLog, setAccount, setCurrentInstanceId, setInstances, setLaunching, setProgress, setSelectedVersionId, setTheme, setVersions]);
 }
 
 export function App() {
