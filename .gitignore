@@ -2,5 +2,6 @@ node_modules
 /dist
 release
 .DS_Store
+pnpm-lock.yaml
 npm-debug.log*
 yarn-error.log*
