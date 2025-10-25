@@ -7,6 +7,8 @@ import { z } from 'zod';
 const settingsSchema = z.object({
   theme: z.enum(['light', 'dark']).default('dark'),
   downloadThreads: z.number().int().min(1).max(16).default(4),
+  onboardingComplete: z.boolean().default(false),
+  proxy: z.string().url().optional(),
   proxy: z.string().url().optional(),
   onboardingComplete: z.boolean().default(false),
   onboardingComplete: z.boolean().default(false)
