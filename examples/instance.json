@@ -1,0 +1,17 @@
+{
+  "id": "example-instance",
+  "name": "Survival",
+  "version": "1.20.2",
+  "javaPath": "/usr/bin/java",
+  "minRam": 2048,
+  "maxRam": 4096,
+  "resolution": {
+    "width": 1920,
+    "height": 1080,
+    "fullscreen": true
+  },
+  "gameDir": "~/CleanLauncher/instances/Survival",
+  "modsDir": "~/CleanLauncher/instances/Survival/mods",
+  "createdAt": "2023-10-01T12:00:00.000Z",
+  "updatedAt": "2023-10-01T12:00:00.000Z"
+}
