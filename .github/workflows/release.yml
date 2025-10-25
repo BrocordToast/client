@@ -1,0 +1,48 @@
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build production bundles
+        run: pnpm build
+
+      - name: Package Windows installer
+        run: pnpm package:win
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CleanLauncher-Setup
+          path: dist/CleanLauncher-Setup-*.exe
+
+      - name: Attach installer to GitHub release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/CleanLauncher-Setup-*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
